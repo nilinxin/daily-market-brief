@@ -132,7 +132,7 @@ def main() -> None:
     try:
         context = build_context(args.mode)
         report_path = write_report(context)
-        notify_report_ready(str(report_path))
+        notify_report_ready(str(report_path), subject=f"每日市场简报 - {context['report_date']}")
         logging.info("Report written to %s", report_path)
     except Exception:
         logging.exception("Market brief generation failed")

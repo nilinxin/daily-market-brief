@@ -26,6 +26,19 @@ python -m src.main --mode full
 
 GitHub Actions 使用 UTC 时间，配置中已经换算。
 
+## 邮件发送
+
+如果想生成后自动发到邮箱，在 GitHub 仓库里打开 `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`，添加：
+
+- `SMTP_HOST`：邮箱服务器，例如 QQ 邮箱是 `smtp.qq.com`。
+- `SMTP_PORT`：通常填 `587`。
+- `SMTP_USER`：发件邮箱。
+- `SMTP_PASSWORD`：邮箱授权码，不是登录密码。
+- `SMTP_TO`：收件邮箱，多个邮箱用英文逗号隔开。
+- `SMTP_FROM`：可选，不填就用发件邮箱。
+
+配置好后，每次自动生成报告都会同时发邮件。没有配置邮箱时，只保存到 `reports/`。
+
 ## 修改关注股票和板块
 
 编辑 `config/watchlists.json`：
