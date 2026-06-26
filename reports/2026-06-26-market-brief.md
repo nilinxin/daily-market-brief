@@ -2,7 +2,7 @@
 
 > 仅供观察，不构成投资建议。内容来自公开数据和新闻来源，可能存在延迟、缺漏或口径差异。
 
-## 一、美股每日简报
+## 美股每日简报
 
 ### 1. 三大指数表现
 
@@ -16,38 +16,42 @@
 
 | 项目 | 最新价 | 涨跌幅 | 观察 |
 |---|---:|---:|---|
-| 纳斯达克100期货 | 29,472.50 | -0.14% | 基本持平 |
-| 标普500期货 | 7,396.00 | -0.43% | 小幅走弱 |
-| 道指期货 | 52,304.00 | +0.05% | 基本持平 |
+| 纳斯达克100期货 | 29,391.75 | -0.42% | 小幅走弱 |
+| 标普500期货 | 7,386.00 | -0.57% | 小幅走弱 |
+| 道指期货 | 52,266.00 | -0.02% | 基本持平 |
 | 富时A50期货 | 15,887.91 | 未取得 | 数据暂缺 |
-| 离岸人民币 | 6.8046 | 未取得 | 数据暂缺 |
-| 美元指数 | 101.51 | +0.08% | 基本持平 |
-| 黄金 | 4,031.10 | +1.02% | 温和上涨 |
-| 原油 | 71.18 | +1.19% | 温和上涨 |
-| 铜 | 6.074 | +2.20% | 明显走强 |
-| 铝 | 3,291.50 | -8.21% | 明显回落 |
+| 离岸人民币 | 6.8063 | 未取得 | 数据暂缺 |
+| 美元指数 | 101.55 | +0.12% | 基本持平 |
+| 黄金 | 4,019.70 | +0.74% | 温和上涨 |
+| 原油 | 71.1 | +1.08% | 温和上涨 |
+| 铜 | 6.044 | +1.70% | 明显走强 |
+| 铝 | 3,293.75 | -8.14% | 明显回落 |
 
 ### 3. 当天或隔夜较强方向
 
-从新闻密度看，AI、半导体、机器人和通用设备 的消息出现较多，可作为盘前重点观察方向。
+AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。
 
 ### 4. 重点方向消息
 
 #### AI
 - [New student loan limits are here. Here's what to do when federal aid isn't enough.](https://finance.yahoo.com/personal-finance/student-loans/article/federal-student-loan-limits-when-federal-aid-isnt-enough-140723743.html)（Yahoo Finance）
-- [Modine Manufacturing Company (MOD) Gains from Growing Data Centre Cooling Exposure](https://finance.yahoo.com/markets/stocks/articles/modine-manufacturing-company-mod-gains-142401090.html)（Yahoo Finance）
-- [Apple’ s AI Upgrade Probably Won’t Be a Game Changer for AAPL Stock](https://finance.yahoo.com/markets/stocks/articles/apple-ai-upgrade-probably-won-142429359.html)（Yahoo Finance）
-- [An Interview with Barchart's AI Market Analyst CARL](https://finance.yahoo.com/markets/commodities/articles/interview-barcharts-ai-market-analyst-143055098.html)（Yahoo Finance）
-- [空前内存短缺引爆全球大涨价！苹果(AAPL.US)罕见跳过高端M6芯片，押注下一代M7端侧AI](https://cn.investing.com/news/stock-market-news/article-3434540)（Investing CN）
+- [‘Major refund opportunity’: IRS may owe millions of Americans cash — but you must claim by July 10 to get your chance](https://finance.yahoo.com/economy/policy/articles/major-refund-opportunity-irs-may-144500475.html)（Yahoo Finance）
+- [JPMorgan raises S&P 500 target to 7,800 but warns of 'flash crash'](https://finance.yahoo.com/markets/article/jpmorgan-raises-sp-500-target-to-7800-but-warns-of-flash-crash-145240724.html)（Yahoo Finance）
+- [Leading investment bank tells investors to prepare for every scenario as policy uncertainty lingers](https://finance.yahoo.com/economy/policy/articles/leading-investment-bank-tells-investors-143400642.html)（Yahoo Finance）
+- [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
 
 #### 半导体
-- [空前内存短缺引爆全球大涨价！苹果(AAPL.US)罕见跳过高端M6芯片，押注下一代M7端侧AI](https://cn.investing.com/news/stock-market-news/article-3434540)（Investing CN）
+- [Alliance Semiconductor: How To Find & Own America's Greatest Opportunities](https://www.investors.com/how-to-invest/growth-stock-alliance-semiconductor-americas-greatest-opportunities/?src=A00220&yptr=yahoo)（Yahoo Finance）
+- [How Applied Materials Could Become the Next $1 Trillion Chip Stock](https://finance.yahoo.com/markets/stocks/articles/applied-materials-could-become-next-150258562.html)（Yahoo Finance）
+- [How Semiconductor Stocks Could Drop 50% From Here, And How This 1 ETF Could Win Big](https://finance.yahoo.com/markets/stocks/articles/semiconductor-stocks-could-drop-50-150220745.html)（Yahoo Finance）
+- [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
+- [科创50狂飙之势堪比费城半导体 AI算力狂潮点燃大A牛市! 业绩期与居民储蓄入市或引爆新一轮主升浪](https://cn.investing.com/news/stock-market-news/article-3434574)（Investing CN）
 
 #### 铜和有色金属
 - 暂未抓取到明确相关消息。
 
 #### 液冷和数据中心
-- 暂未抓取到明确相关消息。
+- [光大证券：数据中心建设带动发电设备需求提升 燃机、柴发产业链深度受益](https://cn.investing.com/news/stock-market-news/article-3434577)（Investing CN）
 
 #### 电力
 - 暂未抓取到明确相关消息。
@@ -56,10 +60,10 @@
 - 暂未抓取到明确相关消息。
 
 #### 机器人和通用设备
-- [曹操出行(02643)与K2集团达成战略合作 计划年内于阿布扎比投放首批Robotaxi车辆](https://cn.investing.com/news/stock-market-news/article-3434537)（Investing CN）
+- 暂未抓取到明确相关消息。
 
 #### 消费电子
-- 暂未抓取到明确相关消息。
+- [港股异动 | 手机产业链全线走低 苹果上调iPad及Mac系列产品价格 高盛下调全球手机出货量预测](https://cn.investing.com/news/stock-market-news/article-3434573)（Investing CN）
 
 ### 5. 热门个股表现
 
@@ -78,7 +82,7 @@
 
 ### 6. 市场情绪分析
 
-三大指数整体波动不大，市场情绪偏中性；期货端暂未给出明显方向。
+三大指数整体波动不大，市场情绪偏中性；期货端有回落压力。
 
 ### 7. 今日美股走势观察
 
@@ -86,53 +90,53 @@
 
 ---
 
-## 二、A股开盘前简报
+## A股开盘前简报
 
 ### 1. 外围信息
 
 - 美股整体变化不大，对 A 股影响偏中性。
-- 纳斯达克100期货：-0.14%，基本持平。
-- 标普500期货：-0.43%，小幅走弱。
-- 道指期货：+0.05%，基本持平。
+- 纳斯达克100期货：-0.42%，小幅走弱。
+- 标普500期货：-0.57%，小幅走弱。
+- 道指期货：-0.02%，基本持平。
 - 富时A50期货：未取得，数据暂缺。
 - 离岸人民币：未取得，数据暂缺。
-- 美元指数：+0.08%，基本持平。
-- 黄金：+1.02%，温和上涨。
-- 原油：+1.19%，温和上涨。
-- 铜：+2.20%，明显走强。
-- 铝：-8.21%，明显回落。
+- 美元指数：+0.12%，基本持平。
+- 黄金：+0.74%，温和上涨。
+- 原油：+1.08%，温和上涨。
+- 铜：+1.70%，明显走强。
+- 铝：-8.14%，明显回落。
 
 ### 2. 国内重要政策、产业消息、公告和观点
 
-- [沪公网安备31010402006047号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402006047)（财联社）
-- [沪金信备 [2021] 2号](https://fisbaobei.ifcert.cn/Home/homeIindex)（财联社）
-- [国务院公布《国务院关于进一步贯彻实施〈中华人民共和国行政处罚法〉的通知》](http://www.csrc.gov.cn/csrc/c100028/c1615676/content.shtml)（证监会）
+- [光大证券：数据中心建设带动发电设备需求提升 燃机、柴发产业链深度受益](https://cn.investing.com/news/stock-market-news/article-3434577)（Investing CN）
+- [科创50狂飙之势堪比费城半导体 AI算力狂潮点燃大A牛市! 业绩期与居民储蓄入市或引爆新一轮主升浪](https://cn.investing.com/news/stock-market-news/article-3434574)（Investing CN）
+- [港股异动 | 手机产业链全线走低 苹果上调iPad及Mac系列产品价格 高盛下调全球手机出货量预测](https://cn.investing.com/news/stock-market-news/article-3434573)（Investing CN）
 - [证监会组织开展“读懂上市公司报告”投资者教育专项活动](http://www.csrc.gov.cn/csrc/c100028/c1615671/content.shtml)（证监会）
-- [陈华平任深圳证券交易所党委书记](http://www.csrc.gov.cn/csrc/c100028/c1605899/content.shtml)（证监会）
 - [证监会新闻发言人答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605830/content.shtml)（证监会）
-- [加强投资者保护，筑牢注册制改革之基——王建军副主席在国际金融论坛第十八届全球年会上的演讲](http://www.csrc.gov.cn/csrc/c100028/c1605825/content.shtml)（证监会）
 - [证监会有关负责人就恒大集团风险事件答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605816/content.shtml)（证监会）
 - [中国证监会召开国际顾问委员会第十八次会议](http://www.csrc.gov.cn/csrc/c100028/c1605812/content.shtml)（证监会）
 - [中国证监会原发审委委员、上海证券交易所原科创板上市审核中心副主任操舰严重违纪违法被开除党籍和公职](http://www.csrc.gov.cn/csrc/c100028/c1605559/content.shtml)（证监会）
 - [证监会同意开展证券公司账户管理功能优化试点](http://www.csrc.gov.cn/csrc/c100028/c1605527/content.shtml)（证监会）
 - [证监会有关部门负责人就相关媒体报道答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605514/content.shtml)（证监会）
+- [证监会就《证券期货行政执法当事人承诺制度实施规定（征求意见稿）》公开征求意见](http://www.csrc.gov.cn/csrc/c100028/c1603534/content.shtml)（证监会）
+- [证监会就《证券期货行政执法当事人承诺金管理办法（征求意见稿）》公开征求意见](http://www.csrc.gov.cn/csrc/c100028/c1600566/content.shtml)（证监会）
 
 ### 3. 重点板块分析
 
-- AI：消息数量较多，盘前可观察是否形成板块共振。
-- 半导体：消息数量较多，盘前可观察是否形成板块共振。
-- 铜和有色金属：暂未抓取到明显新增催化，更多看个股公告和资金承接。
-- 液冷和数据中心：暂未抓取到明显新增催化，更多看个股公告和资金承接。
-- 电力：暂未抓取到明显新增催化，更多看个股公告和资金承接。
-- 航天军工：暂未抓取到明显新增催化，更多看个股公告和资金承接。
-- 机器人和通用设备：消息数量较多，盘前可观察是否形成板块共振。
-- 消费电子：暂未抓取到明显新增催化，更多看个股公告和资金承接。
+- AI：有新增消息催化，代表消息是“New student loan limits are here. Here's what to do when federal aid isn't enough.”，开盘重点看强度和持续性。
+- 半导体：有新增消息催化，代表消息是“Alliance Semiconductor: How To Find & Own America's Greatest Opportunities”，开盘重点看强度和持续性。
+- 铜和有色金属：暂未看到明确新增催化，更多看资金承接和个股公告。
+- 液冷和数据中心：有新增消息催化，代表消息是“光大证券：数据中心建设带动发电设备需求提升 燃机、柴发产业链深度受益”，开盘重点看强度和持续性。
+- 电力：暂未看到明确新增催化，更多看资金承接和个股公告。
+- 航天军工：暂未看到明确新增催化，更多看资金承接和个股公告。
+- 机器人和通用设备：暂未看到明确新增催化，更多看资金承接和个股公告。
+- 消费电子：有新增消息催化，代表消息是“港股异动 | 手机产业链全线走低 苹果上调iPad及Mac系列产品价格 高盛下调全球手机出货量预测”，开盘重点看强度和持续性。
 
 ### 4. 开盘前观察
 
 可能偏强或高开的方向：
 
-AI、半导体、机器人和通用设备
+AI、半导体、液冷和数据中心、消费电子
 
 可能分化的方向：
 
@@ -140,11 +144,11 @@ AI、半导体、机器人和通用设备
 
 需要注意追高风险的方向：
 
-铝 走弱相关方向，以及开盘快速冲高但量能不足的个股。
+标普500期货、铝 走弱相关方向，以及开盘快速冲高但量能不足的个股。
 
 ### 5. 今日关注方向
 
-AI、半导体、机器人和通用设备、黄金、原油、铜
+AI、半导体、液冷和数据中心、消费电子、黄金、原油
 
 ### 6. 风险提示
 
@@ -158,11 +162,11 @@ AI、半导体、机器人和通用设备、黄金、原油、铜
 - [Yahoo Finance](https://finance.yahoo.com/news/rssindex)
 - [Nasdaq News](https://www.nasdaq.com/feed/rssoutbound?category=Markets)
 - [Investing CN](https://cn.investing.com/rss/news.rss)
-- [新浪财经](https://rss.sina.com.cn/finance/roll.xml)
+- [东方财富](https://finance.eastmoney.com/a/cywjh.xml)
 - [财联社](https://www.cls.cn/telegraph)
 - [证监会](http://www.csrc.gov.cn/csrc/c100028/common_list.shtml)
 
 ## 抓取状态
 
 - Nasdaq News 新闻抓取失败：请求超时
-- 新浪财经 新闻抓取失败：HTTPError: 404 Client Error: Not Found for url: https://rss.sina.com.cn...
+- 东方财富 新闻抓取失败：HTTPError: 404 Client Error: Not Found for url: https://finance.eastmon...
