@@ -1,0 +1,20 @@
+{
+  "market_data": {
+    "primary": "Yahoo Finance public chart endpoint"
+  },
+  "rss_feeds": [
+    {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/news/rssindex", "region": "global"},
+    {"name": "Nasdaq News", "url": "https://www.nasdaq.com/feed/rssoutbound?category=Markets", "region": "us"},
+    {"name": "Investing CN", "url": "https://cn.investing.com/rss/news.rss", "region": "global"},
+    {"name": "新浪财经", "url": "https://rss.sina.com.cn/finance/roll.xml", "region": "cn"}
+  ],
+  "web_sources": [
+    {"name": "财联社", "url": "https://www.cls.cn/telegraph", "region": "cn"},
+    {"name": "证监会", "url": "http://www.csrc.gov.cn/csrc/c100028/common_list.shtml", "region": "cn"}
+  ],
+  "limits": {
+    "news_per_feed": 20,
+    "topic_items": 5,
+    "max_news_age_hours": 36
+  }
+}

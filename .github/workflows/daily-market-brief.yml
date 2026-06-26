@@ -1,0 +1,57 @@
+name: Daily Market Brief
+
+on:
+  schedule:
+    # Beijing 07:30, UTC previous day 23:30.
+    - cron: "30 23 * * 0-4"
+    # Beijing 08:50, UTC 00:50.
+    - cron: "50 0 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Report mode"
+        required: false
+        default: "full"
+        type: choice
+        options:
+          - full
+          - us
+          - cn
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate report
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ inputs.mode || 'full' }}"
+          elif [ "${{ github.event.schedule }}" = "30 23 * * 0-4" ]; then
+            MODE="us"
+          elif [ "${{ github.event.schedule }}" = "50 0 * * 1-5" ]; then
+            MODE="cn"
+          else
+            MODE="full"
+          fi
+          python -m src.main --mode "$MODE"
+
+      - name: Commit generated report
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add daily market brief"
+          file_pattern: reports/*.md

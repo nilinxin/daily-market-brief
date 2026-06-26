@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+.pytest_cache/
+logs/*.log
+
+# Existing unrelated local files in this workspace.
+.pydeps/
+generated_report_assets/
+rendered_report/
+rendered_report_word/
+rendered_template_fill/
+1.png
+2.png
+3.png
+4.png
+EP3IPCHKQ(L}P9M[ZY``(W4.png
+WA302H`}JCQ81%QI]CA~IRP.png
+build_co2_temp_report.py
+fill_template_report.py
+嵌入式技术课程设计报告书_内容增强版.docx
+视频插件参数填写补充.md
+视频脚本视频生成器_配置清单.md

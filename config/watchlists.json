@@ -1,0 +1,43 @@
+{
+  "timezone": "Asia/Shanghai",
+  "report_language": "zh-CN",
+  "us_indices": [
+    {"name": "道琼斯", "symbol": "^DJI"},
+    {"name": "纳斯达克", "symbol": "^IXIC"},
+    {"name": "标普500", "symbol": "^GSPC"}
+  ],
+  "global_watch": [
+    {"name": "纳斯达克100期货", "symbol": "NQ=F"},
+    {"name": "标普500期货", "symbol": "ES=F"},
+    {"name": "道指期货", "symbol": "YM=F"},
+    {"name": "富时A50期货", "symbol": "XIN9.FGI"},
+    {"name": "离岸人民币", "symbol": "CNH=X"},
+    {"name": "美元指数", "symbol": "DX-Y.NYB"},
+    {"name": "黄金", "symbol": "GC=F"},
+    {"name": "原油", "symbol": "CL=F"},
+    {"name": "铜", "symbol": "HG=F"},
+    {"name": "铝", "symbol": "ALI=F"}
+  ],
+  "hot_us_stocks": [
+    {"name": "英伟达", "symbol": "NVDA"},
+    {"name": "AMD", "symbol": "AMD"},
+    {"name": "特斯拉", "symbol": "TSLA"},
+    {"name": "苹果", "symbol": "AAPL"},
+    {"name": "微软", "symbol": "MSFT"},
+    {"name": "谷歌", "symbol": "GOOGL"},
+    {"name": "Meta", "symbol": "META"},
+    {"name": "博通", "symbol": "AVGO"},
+    {"name": "台积电", "symbol": "TSM"},
+    {"name": "美光", "symbol": "MU"}
+  ],
+  "focus_topics": {
+    "AI": ["AI", "artificial intelligence", "OpenAI", "算力", "大模型"],
+    "半导体": ["semiconductor", "chip", "半导体", "芯片", "GPU", "HBM"],
+    "铜和有色金属": ["copper", "aluminum", "铜", "铝", "有色金属"],
+    "液冷和数据中心": ["liquid cooling", "data center", "液冷", "数据中心"],
+    "电力": ["power grid", "electricity", "电力", "电网"],
+    "航天军工": ["aerospace", "defense", "航天", "军工"],
+    "机器人和通用设备": ["robot", "industrial equipment", "机器人", "通用设备"],
+    "消费电子": ["consumer electronics", "smartphone", "消费电子", "手机"]
+  }
+}
