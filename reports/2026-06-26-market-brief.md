@@ -16,29 +16,29 @@
 
 | 项目 | 最新价 | 涨跌幅 | 观察 |
 |---|---:|---:|---|
-| 纳斯达克100期货 | 29,516.75 | +0.01% | 基本持平 |
-| 标普500期货 | 7,403.50 | -0.33% | 小幅走弱 |
-| 道指期货 | 52,347.00 | +0.13% | 基本持平 |
+| 纳斯达克100期货 | 29,472.50 | -0.14% | 基本持平 |
+| 标普500期货 | 7,396.00 | -0.43% | 小幅走弱 |
+| 道指期货 | 52,304.00 | +0.05% | 基本持平 |
 | 富时A50期货 | 15,887.91 | 未取得 | 数据暂缺 |
-| 离岸人民币 | 6.8015 | 未取得 | 数据暂缺 |
-| 美元指数 | 101.53 | +0.09% | 基本持平 |
-| 黄金 | 4,037.20 | +1.18% | 温和上涨 |
-| 原油 | 71.45 | +1.58% | 明显走强 |
-| 铜 | 6.0915 | +2.50% | 明显走强 |
-| 铝 | 3,280.00 | -8.53% | 明显回落 |
+| 离岸人民币 | 6.8046 | 未取得 | 数据暂缺 |
+| 美元指数 | 101.51 | +0.08% | 基本持平 |
+| 黄金 | 4,031.10 | +1.02% | 温和上涨 |
+| 原油 | 71.18 | +1.19% | 温和上涨 |
+| 铜 | 6.074 | +2.20% | 明显走强 |
+| 铝 | 3,291.50 | -8.21% | 明显回落 |
 
 ### 3. 当天或隔夜较强方向
 
-从新闻密度看，AI、液冷和数据中心、半导体、机器人和通用设备 的消息出现较多，可作为盘前重点观察方向。
+从新闻密度看，AI、半导体、机器人和通用设备 的消息出现较多，可作为盘前重点观察方向。
 
 ### 4. 重点方向消息
 
 #### AI
-- [Pegasystems (PEGA) Launches Solution Designer Initiative to Streamline Enterprise AI Delivery](https://finance.yahoo.com/technology/ai/articles/pegasystems-pega-launches-solution-designer-134345576.html)（Yahoo Finance）
-- [AppFolio (APPF) Expands Performance Platform with Anthropic-Powered Agentic AI Integration](https://finance.yahoo.com/technology/ai/articles/appfolio-appf-expands-performance-platform-134338858.html)（Yahoo Finance）
-- [Credo Technology (CRDO) Starts With Outperform Rating as Optical AI Connectivity Opportunity Expands](https://finance.yahoo.com/markets/stocks/articles/credo-technology-crdo-starts-outperform-134655229.html)（Yahoo Finance）
-- [SpaceX (SPCX) Lands Reflection AI Deal While KeyBanc Flags Starship Risks](https://finance.yahoo.com/technology/ai/articles/spacex-spcx-lands-reflection-ai-134624753.html)（Yahoo Finance）
-- [Enphase Energy (ENPH) Gains Upgrade as Solid-State Transformers Open AI Data Center Opportunity](https://finance.yahoo.com/energy/articles/enphase-energy-enph-gains-upgrade-134638710.html)（Yahoo Finance）
+- [New student loan limits are here. Here's what to do when federal aid isn't enough.](https://finance.yahoo.com/personal-finance/student-loans/article/federal-student-loan-limits-when-federal-aid-isnt-enough-140723743.html)（Yahoo Finance）
+- [Modine Manufacturing Company (MOD) Gains from Growing Data Centre Cooling Exposure](https://finance.yahoo.com/markets/stocks/articles/modine-manufacturing-company-mod-gains-142401090.html)（Yahoo Finance）
+- [Apple’ s AI Upgrade Probably Won’t Be a Game Changer for AAPL Stock](https://finance.yahoo.com/markets/stocks/articles/apple-ai-upgrade-probably-won-142429359.html)（Yahoo Finance）
+- [An Interview with Barchart's AI Market Analyst CARL](https://finance.yahoo.com/markets/commodities/articles/interview-barcharts-ai-market-analyst-143055098.html)（Yahoo Finance）
+- [空前内存短缺引爆全球大涨价！苹果(AAPL.US)罕见跳过高端M6芯片，押注下一代M7端侧AI](https://cn.investing.com/news/stock-market-news/article-3434540)（Investing CN）
 
 #### 半导体
 - [空前内存短缺引爆全球大涨价！苹果(AAPL.US)罕见跳过高端M6芯片，押注下一代M7端侧AI](https://cn.investing.com/news/stock-market-news/article-3434540)（Investing CN）
@@ -47,8 +47,7 @@
 - 暂未抓取到明确相关消息。
 
 #### 液冷和数据中心
-- [Enphase Energy (ENPH) Gains Upgrade as Solid-State Transformers Open AI Data Center Opportunity](https://finance.yahoo.com/energy/articles/enphase-energy-enph-gains-upgrade-134638710.html)（Yahoo Finance）
-- [Intel (INTC) Advanced Packaging Could Support AI Data Center Growth, Mizuho Says](https://finance.yahoo.com/technology/ai/articles/intel-intc-advanced-packaging-could-134719489.html)（Yahoo Finance）
+- 暂未抓取到明确相关消息。
 
 #### 电力
 - 暂未抓取到明确相关消息。
@@ -92,38 +91,38 @@
 ### 1. 外围信息
 
 - 美股整体变化不大，对 A 股影响偏中性。
-- 纳斯达克100期货：+0.01%，基本持平。
-- 标普500期货：-0.33%，小幅走弱。
-- 道指期货：+0.13%，基本持平。
+- 纳斯达克100期货：-0.14%，基本持平。
+- 标普500期货：-0.43%，小幅走弱。
+- 道指期货：+0.05%，基本持平。
 - 富时A50期货：未取得，数据暂缺。
 - 离岸人民币：未取得，数据暂缺。
-- 美元指数：+0.09%，基本持平。
-- 黄金：+1.18%，温和上涨。
-- 原油：+1.58%，明显走强。
-- 铜：+2.50%，明显走强。
-- 铝：-8.53%，明显回落。
+- 美元指数：+0.08%，基本持平。
+- 黄金：+1.02%，温和上涨。
+- 原油：+1.19%，温和上涨。
+- 铜：+2.20%，明显走强。
+- 铝：-8.21%，明显回落。
 
 ### 2. 国内重要政策、产业消息、公告和观点
 
-- [沪ICP备14040942号-9](http://beian.miit.gov.cn)（财联社）
 - [沪公网安备31010402006047号](http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010402006047)（财联社）
 - [沪金信备 [2021] 2号](https://fisbaobei.ifcert.cn/Home/homeIindex)（财联社）
-- [æ éç¢](http://www.csrc.gov.cn/wza)（证监会）
-- [æºææ¦åµ](http://www.csrc.gov.cn/csrc/jggk/index.shtml)（证监会）
-- [æ°é»åå¸](http://www.csrc.gov.cn/csrc/xwfb/index.shtml)（证监会）
-- [æ¿å¡ä¿¡æ¯](http://www.csrc.gov.cn/csrc/zwxx/index.shtml)（证监会）
-- [åäºæå¡](http://www.csrc.gov.cn/csrc/bsfw/index.shtml)（证监会）
-- [äºå¨äº¤æµ](http://www.csrc.gov.cn/csrc/hdjl/index.shtml)（证监会）
-- [ç»è®¡ä¿¡æ¯](http://www.csrc.gov.cn/csrc/tjsj/index.shtml)（证监会）
-- [ä¸é¢ä¸æ ](http://www.csrc.gov.cn/csrc/ztzl/index.shtml)（证监会）
-- [æ¶æ¿è¦é»](http://www.csrc.gov.cn/csrc/c100027/common_list.shtml)（证监会）
+- [国务院公布《国务院关于进一步贯彻实施〈中华人民共和国行政处罚法〉的通知》](http://www.csrc.gov.cn/csrc/c100028/c1615676/content.shtml)（证监会）
+- [证监会组织开展“读懂上市公司报告”投资者教育专项活动](http://www.csrc.gov.cn/csrc/c100028/c1615671/content.shtml)（证监会）
+- [陈华平任深圳证券交易所党委书记](http://www.csrc.gov.cn/csrc/c100028/c1605899/content.shtml)（证监会）
+- [证监会新闻发言人答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605830/content.shtml)（证监会）
+- [加强投资者保护，筑牢注册制改革之基——王建军副主席在国际金融论坛第十八届全球年会上的演讲](http://www.csrc.gov.cn/csrc/c100028/c1605825/content.shtml)（证监会）
+- [证监会有关负责人就恒大集团风险事件答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605816/content.shtml)（证监会）
+- [中国证监会召开国际顾问委员会第十八次会议](http://www.csrc.gov.cn/csrc/c100028/c1605812/content.shtml)（证监会）
+- [中国证监会原发审委委员、上海证券交易所原科创板上市审核中心副主任操舰严重违纪违法被开除党籍和公职](http://www.csrc.gov.cn/csrc/c100028/c1605559/content.shtml)（证监会）
+- [证监会同意开展证券公司账户管理功能优化试点](http://www.csrc.gov.cn/csrc/c100028/c1605527/content.shtml)（证监会）
+- [证监会有关部门负责人就相关媒体报道答记者问](http://www.csrc.gov.cn/csrc/c100028/c1605514/content.shtml)（证监会）
 
 ### 3. 重点板块分析
 
 - AI：消息数量较多，盘前可观察是否形成板块共振。
 - 半导体：消息数量较多，盘前可观察是否形成板块共振。
 - 铜和有色金属：暂未抓取到明显新增催化，更多看个股公告和资金承接。
-- 液冷和数据中心：消息数量较多，盘前可观察是否形成板块共振。
+- 液冷和数据中心：暂未抓取到明显新增催化，更多看个股公告和资金承接。
 - 电力：暂未抓取到明显新增催化，更多看个股公告和资金承接。
 - 航天军工：暂未抓取到明显新增催化，更多看个股公告和资金承接。
 - 机器人和通用设备：消息数量较多，盘前可观察是否形成板块共振。
@@ -133,7 +132,7 @@
 
 可能偏强或高开的方向：
 
-AI、半导体、液冷和数据中心、机器人和通用设备
+AI、半导体、机器人和通用设备
 
 可能分化的方向：
 
@@ -145,7 +144,7 @@ AI、半导体、液冷和数据中心、机器人和通用设备
 
 ### 5. 今日关注方向
 
-AI、半导体、液冷和数据中心、机器人和通用设备、黄金、原油
+AI、半导体、机器人和通用设备、黄金、原油、铜
 
 ### 6. 风险提示
 
