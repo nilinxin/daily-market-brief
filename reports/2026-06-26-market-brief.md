@@ -16,31 +16,31 @@
 
 | 项目 | 最新价 | 涨跌幅 | 观察 |
 |---|---:|---:|---|
-| 纳斯达克100期货 | 29,344.25 | -0.58% | 小幅走弱 |
-| 标普500期货 | 7,380.00 | -0.65% | 小幅走弱 |
-| 道指期货 | 52,268.00 | -0.02% | 基本持平 |
+| 纳斯达克100期货 | 29,338.00 | -0.60% | 小幅走弱 |
+| 标普500期货 | 7,379.75 | -0.65% | 小幅走弱 |
+| 道指期货 | 52,263.00 | -0.03% | 基本持平 |
 | 富时A50期货 | 15,887.91 | +1.18% | 温和上涨 |
-| 离岸人民币 | 6.8066 | +0.12% | 基本持平 |
-| 美元指数 | 101.55 | +0.12% | 基本持平 |
-| 黄金 | 4,008.90 | +0.47% | 温和上涨 |
-| 原油 | 71.1 | +1.08% | 温和上涨 |
-| 铜 | 6.0455 | +1.72% | 明显走强 |
-| 铝 | 3,293.75 | -8.14% | 明显回落 |
+| 离岸人民币 | 6.8072 | +0.13% | 基本持平 |
+| 美元指数 | 101.54 | +0.11% | 基本持平 |
+| 黄金 | 4,008.80 | +0.46% | 温和上涨 |
+| 原油 | 71.11 | +1.09% | 温和上涨 |
+| 铜 | 6.0495 | +1.79% | 明显走强 |
+| 铝 | 3,280.00 | 未取得 | 波动异常，需核对 |
 
 ### 3. 当天或隔夜较强方向
 
-半导体、AI、液冷和数据中心、消费电子 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。
+AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。
 
 ### 4. 重点方向消息
 
 #### AI
 - [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
-- [Infosys (INFY) Continues To Win Major AI Contracts As Stock Trades Near 52-Week Lows](https://finance.yahoo.com/technology/ai/articles/infosys-infy-continues-win-major-152440602.html)（Yahoo Finance）
+- [This Artificial Intelligence (AI) Infrastructure Stock Could Be Bigger Than Nvidia Over the Next Decade](https://finance.yahoo.com/technology/ai/articles/artificial-intelligence-ai-infrastructure-stock-145000367.html)（Yahoo Finance）
+- [Pegasystems (PEGA) Is Growing On The Back Of AI, Could Investors Be Missing This Opportunity?](https://finance.yahoo.com/technology/ai/articles/pegasystems-pega-growing-back-ai-152429540.html)（Yahoo Finance）
+- [Trading At 52-Week Lows, Pony AI (PONY) Stock Could More Than Double From Here According To Analysts](https://finance.yahoo.com/technology/ai/articles/trading-52-week-lows-pony-152427072.html)（Yahoo Finance）
 - [科创50狂飙之势堪比费城半导体 AI算力狂潮点燃大A牛市! 业绩期与居民储蓄入市或引爆新一轮主升浪](https://cn.investing.com/news/stock-market-news/article-3434574)（Investing CN）
-- [港股异动 | 佑驾创新(02431)再涨超6% 获高管团队增持 公司进一步延伸物理AI技术边界](https://cn.investing.com/news/stock-market-news/article-3434572)（Investing CN）
 
 #### 半导体
-- [Alliance Semiconductor: How To Find & Own America's Greatest Opportunities](https://www.investors.com/how-to-invest/growth-stock-alliance-semiconductor-americas-greatest-opportunities/?src=A00220&yptr=yahoo)（Yahoo Finance）
 - [How Semiconductor Stocks Could Drop 50% From Here, And How This 1 ETF Could Win Big](https://finance.yahoo.com/markets/stocks/articles/semiconductor-stocks-could-drop-50-150220745.html)（Yahoo Finance）
 - [How Applied Materials Could Become the Next $1 Trillion Chip Stock](https://finance.yahoo.com/markets/stocks/articles/applied-materials-could-become-next-150258562.html)（Yahoo Finance）
 - [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
@@ -94,16 +94,16 @@
 ### 1. 外围信息
 
 - 美股整体变化不大，对 A 股影响偏中性。
-- 纳斯达克100期货：-0.58%，小幅走弱。
+- 纳斯达克100期货：-0.60%，小幅走弱。
 - 标普500期货：-0.65%，小幅走弱。
-- 道指期货：-0.02%，基本持平。
+- 道指期货：-0.03%，基本持平。
 - 富时A50期货：+1.18%，温和上涨。
-- 离岸人民币：+0.12%，基本持平。
-- 美元指数：+0.12%，基本持平。
-- 黄金：+0.47%，温和上涨。
-- 原油：+1.08%，温和上涨。
-- 铜：+1.72%，明显走强。
-- 铝：-8.14%，明显回落。
+- 离岸人民币：+0.13%，基本持平。
+- 美元指数：+0.11%，基本持平。
+- 黄金：+0.46%，温和上涨。
+- 原油：+1.09%，温和上涨。
+- 铜：+1.79%，明显走强。
+- 铝：未取得，波动异常，需核对。
 
 ### 2. 国内重要政策、产业消息、公告和观点
 
@@ -123,7 +123,7 @@
 ### 3. 重点板块分析
 
 - AI：有新增消息催化，代表消息是“Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.”，开盘重点看强度和持续性。
-- 半导体：有新增消息催化，代表消息是“Alliance Semiconductor: How To Find & Own America's Greatest Opportunities”，开盘重点看强度和持续性。
+- 半导体：有新增消息催化，代表消息是“How Semiconductor Stocks Could Drop 50% From Here, And How This 1 ETF Could Win Big”，开盘重点看强度和持续性。
 - 铜和有色金属：暂未看到明确新增催化，更多看资金承接和个股公告。
 - 液冷和数据中心：有新增消息催化，代表消息是“光大证券：数据中心建设带动发电设备需求提升 燃机、柴发产业链深度受益”，开盘重点看强度和持续性。
 - 电力：暂未看到明确新增催化，更多看资金承接和个股公告。
@@ -143,7 +143,7 @@ AI、半导体、液冷和数据中心、消费电子
 
 需要注意追高风险的方向：
 
-纳斯达克100期货、标普500期货、铝 走弱相关方向，以及开盘快速冲高但量能不足的个股。
+纳斯达克100期货、标普500期货 走弱相关方向，以及开盘快速冲高但量能不足的个股。
 
 ### 5. 今日关注方向
 
