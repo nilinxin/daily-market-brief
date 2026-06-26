@@ -15,8 +15,8 @@ from src.analyze import (
     build_us_outlook,
     summarize_sectors,
 )
-from src.fetch_market import fetch_quotes
-from src.fetch_news import fetch_rss_news, fetch_web_headlines, filter_china_news, filter_topic_news
+from src.fetch_market import configured_market_sources, fetch_quotes
+from src.fetch_news import dedupe_news, fetch_rss_news, fetch_web_headlines, filter_china_news, filter_topic_news
 from src.notifier import notify_report_ready
 from src.render_markdown import render_report
 
@@ -66,7 +66,7 @@ def build_context(mode: str) -> dict:
     )
     logging.info("Fetching web headlines")
     web_news = fetch_web_headlines(sources_config.get("web_sources", []), errors)
-    all_news = rss_news + web_news
+    all_news = dedupe_news(rss_news + web_news)
 
     topic_news = filter_topic_news(
         all_news,
@@ -80,11 +80,21 @@ def build_context(mode: str) -> dict:
     source_links = [
         {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/"},
     ]
+    for name in configured_market_sources():
+        if name == "Finnhub free API":
+            source_links.append({"name": name, "url": "https://finnhub.io/docs/api"})
+        elif name == "Alpha Vantage free API":
+            source_links.append({"name": name, "url": "https://www.alphavantage.co/documentation/"})
+        elif name == "Twelve Data free API":
+            source_links.append({"name": name, "url": "https://twelvedata.com/docs"})
+        elif name == "Tiingo free API":
+            source_links.append({"name": name, "url": "https://www.tiingo.com/documentation/end-of-day"})
     source_links.extend({"name": feed["name"], "url": feed["url"]} for feed in sources_config.get("rss_feeds", []))
     source_links.extend({"name": item["name"], "url": item["url"]} for item in sources_config.get("web_sources", []))
 
     return {
         "mode": mode,
+        "report_title": _report_title(mode),
         "report_date": report_date,
         "generated_at": now.strftime("%Y-%m-%d %H:%M:%S %Z"),
         "us_indices": us_indices,
@@ -103,7 +113,7 @@ def build_context(mode: str) -> dict:
         "focus_today": focus_today,
         "risk_warning": risk_warning,
         "sources": source_links,
-        "errors": errors,
+        "errors": _summarize_errors(errors),
     }
 
 
@@ -123,6 +133,47 @@ def write_report(context: dict) -> Path:
     return report_path
 
 
+def _email_subject(mode: str, report_date: str) -> str:
+    if mode == "us":
+        return f"美股每日简报 - {report_date}"
+    if mode == "cn":
+        return f"A股盘前简报 - {report_date}"
+    return f"每日市场简报 - {report_date}"
+
+
+def _report_title(mode: str) -> str:
+    if mode == "us":
+        return "美股每日简报"
+    if mode == "cn":
+        return "A股盘前简报"
+    return "每日市场简报"
+
+
+def _summarize_errors(errors: list[str]) -> list[str]:
+    if len(errors) <= 12:
+        return errors
+
+    market_errors = [error for error in errors if "行情抓取失败" in error]
+    news_errors = [error for error in errors if "新闻抓取失败" in error or "网页新闻抓取失败" in error]
+    other_errors = [error for error in errors if error not in market_errors and error not in news_errors]
+    summary: list[str] = []
+    if market_errors:
+        common_reason = _common_reason(market_errors)
+        summary.append(f"行情数据：{len(market_errors)} 项未取得（{common_reason}）。")
+    if news_errors:
+        common_reason = _common_reason(news_errors)
+        summary.append(f"新闻数据：{len(news_errors)} 个来源未取得（{common_reason}）。")
+    summary.extend(other_errors[:5])
+    return summary
+
+
+def _common_reason(errors: list[str]) -> str:
+    reasons = [error.rsplit("：", 1)[-1] for error in errors if "：" in error]
+    if not reasons:
+        return "原因见日志"
+    return max(set(reasons), key=reasons.count)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate daily market brief.")
     parser.add_argument("--mode", choices=["full", "us", "cn"], default="full")
@@ -132,7 +183,7 @@ def main() -> None:
     try:
         context = build_context(args.mode)
         report_path = write_report(context)
-        notify_report_ready(str(report_path), subject=f"每日市场简报 - {context['report_date']}")
+        notify_report_ready(str(report_path), subject=_email_subject(context["mode"], context["report_date"]))
         logging.info("Report written to %s", report_path)
     except Exception:
         logging.exception("Market brief generation failed")

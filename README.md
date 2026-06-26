@@ -53,6 +53,17 @@ GitHub Actions 使用 UTC 时间，配置中已经换算。
 
 后续可以加入 Finnhub、Alpha Vantage、邮件、飞书、Telegram 等密钥。不要把真实密钥写进代码，应放在 GitHub Secrets。
 
+## 免费数据源增强
+
+下面这些 key 都是可选项。不填也能运行，填了会作为免费备用数据源使用：
+
+- `FINNHUB_API_KEY`
+- `ALPHA_VANTAGE_API_KEY`
+- `TWELVE_DATA_API_KEY`
+- `TIINGO_API_KEY`
+
+程序只按免费额度使用这些来源。某个 key 没填、额度用完或请求失败时，会自动跳过，不影响报告生成。
+
 ## 免责声明
 
 报告仅供观察，不构成投资建议。

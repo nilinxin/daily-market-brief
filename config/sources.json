@@ -6,7 +6,7 @@
     {"name": "Yahoo Finance", "url": "https://finance.yahoo.com/news/rssindex", "region": "global"},
     {"name": "Nasdaq News", "url": "https://www.nasdaq.com/feed/rssoutbound?category=Markets", "region": "us"},
     {"name": "Investing CN", "url": "https://cn.investing.com/rss/news.rss", "region": "global"},
-    {"name": "新浪财经", "url": "https://rss.sina.com.cn/finance/roll.xml", "region": "cn"}
+    {"name": "东方财富", "url": "https://finance.eastmoney.com/a/cywjh.xml", "region": "cn"}
   ],
   "web_sources": [
     {"name": "财联社", "url": "https://www.cls.cn/telegraph", "region": "cn"},

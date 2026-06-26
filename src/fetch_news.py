@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
+import re
 from typing import Iterable
 from xml.etree import ElementTree
 
@@ -36,6 +37,7 @@ def _is_useful_headline(title: str) -> bool:
         "ICP备",
         "公安",
         "备案",
+        "金信备",
         "网站地图",
         "联系我们",
         "无障碍",
@@ -44,8 +46,17 @@ def _is_useful_headline(title: str) -> bool:
         "繁体",
         "版权所有",
         "Copyright",
+        "机构概况",
+        "新闻发布",
+        "政务信息",
+        "办事服务",
+        "互动交流",
+        "统计信息",
+        "专题专栏",
     ]
     if any(word.lower() in title.lower() for word in blocked):
+        return False
+    if re.search(r"[ãæåçèéäöüð]{2,}", title, flags=re.IGNORECASE):
         return False
     replacement_count = title.count("�")
     if replacement_count >= 2:
@@ -94,7 +105,6 @@ def _iter_feed_entries(xml_text: str) -> list[dict[str, str]]:
             }
         )
     return entries
-    return None
 
 
 def fetch_rss_news(feeds: Iterable[dict], limit_per_feed: int, max_age_hours: int, errors: list[str]) -> list[NewsItem]:
@@ -112,7 +122,7 @@ def fetch_rss_news(feeds: Iterable[dict], limit_per_feed: int, max_age_hours: in
                 title = " ".join(entry.get("title", "").split())
                 link = entry.get("link", feed["url"])
                 published = _parse_date(entry.get("published"))
-                if not title or link in seen:
+                if not title or link in seen or not _is_useful_headline(title):
                     continue
                 if published and published < cutoff:
                     continue
@@ -151,6 +161,8 @@ def fetch_web_headlines(sources: Iterable[dict], errors: list[str], limit_per_so
                 if len(title) < 8 or not _is_useful_headline(title):
                     continue
                 link = anchor["href"]
+                if "beian" in link.lower():
+                    continue
                 if link.startswith("/"):
                     link = source["url"].split("/", 3)[:3]
                     link = "/".join(link) + anchor["href"]
@@ -189,6 +201,20 @@ def filter_topic_news(news: Iterable[NewsItem], topics: dict[str, list[str]], li
     return result
 
 
+def dedupe_news(news: Iterable[NewsItem]) -> list[NewsItem]:
+    seen_titles: set[str] = set()
+    seen_links: set[str] = set()
+    result: list[NewsItem] = []
+    for item in news:
+        normalized_title = re.sub(r"\W+", "", item.title.lower())
+        if item.link in seen_links or normalized_title in seen_titles:
+            continue
+        seen_links.add(item.link)
+        seen_titles.add(normalized_title)
+        result.append(item)
+    return result
+
+
 def filter_china_news(news: Iterable[NewsItem], limit: int = 12) -> list[NewsItem]:
     china_keywords = [
         "中国",
@@ -211,7 +237,9 @@ def filter_china_news(news: Iterable[NewsItem], limit: int = 12) -> list[NewsIte
     ]
     picked: list[NewsItem] = []
     for item in news:
-        if item.region == "cn" or any(keyword.lower() in item.title.lower() for keyword in china_keywords):
+        if not _is_useful_headline(item.title):
+            continue
+        if any(keyword.lower() in item.title.lower() for keyword in china_keywords):
             picked.append(item)
         if len(picked) >= limit:
             break

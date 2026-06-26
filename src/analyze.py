@@ -18,9 +18,9 @@ def summarize_sectors(topic_news: dict[str, list[NewsItem]]) -> str:
     counts = Counter({topic: len(items) for topic, items in topic_news.items()})
     active = [topic for topic, count in counts.most_common() if count > 0]
     if not active:
-        return "从已抓取新闻看，暂未出现特别集中的板块线索。"
+        return "已抓取消息没有明显集中在单一主线，盘前更适合观察指数和权重股方向。"
     top = "、".join(active[:5])
-    return f"从新闻密度看，{top} 的消息出现较多，可作为盘前重点观察方向。"
+    return f"{top} 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。"
 
 
 def analyze_us_sentiment(us_indices: list[MarketQuote], global_watch: list[MarketQuote], hot_stocks: list[MarketQuote]) -> str:
@@ -90,9 +90,10 @@ def build_china_sector_analysis(topic_news: dict[str, list[NewsItem]]) -> str:
     lines = []
     for topic, items in topic_news.items():
         if items:
-            lines.append(f"- {topic}：消息数量较多，盘前可观察是否形成板块共振。")
+            title = items[0].title
+            lines.append(f"- {topic}：有新增消息催化，代表消息是“{title}”，开盘重点看强度和持续性。")
         else:
-            lines.append(f"- {topic}：暂未抓取到明显新增催化，更多看个股公告和资金承接。")
+            lines.append(f"- {topic}：暂未看到明确新增催化，更多看资金承接和个股公告。")
     return "\n".join(lines)
 
 
