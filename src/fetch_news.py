@@ -31,6 +31,32 @@ def _brief_error(exc: Exception) -> str:
     return f"{name}: {text}"
 
 
+def _is_useful_headline(title: str) -> bool:
+    blocked = [
+        "ICP备",
+        "公安",
+        "备案",
+        "网站地图",
+        "联系我们",
+        "无障碍",
+        "English",
+        "简体",
+        "繁体",
+        "版权所有",
+        "Copyright",
+    ]
+    if any(word.lower() in title.lower() for word in blocked):
+        return False
+    replacement_count = title.count("�")
+    if replacement_count >= 2:
+        return False
+    ascii_letters = sum(1 for char in title if char.isascii() and char.isalpha())
+    non_ascii = sum(1 for char in title if not char.isascii())
+    if non_ascii >= 4 and ascii_letters >= non_ascii:
+        return False
+    return True
+
+
 def _parse_date(value: str | None) -> datetime | None:
     if not value:
         return None
@@ -116,11 +142,13 @@ def fetch_web_headlines(sources: Iterable[dict], errors: list[str], limit_per_so
         try:
             response = requests.get(source["url"], headers=headers, timeout=15)
             response.raise_for_status()
+            if response.encoding is None or response.encoding.lower() == "iso-8859-1":
+                response.encoding = response.apparent_encoding
             soup = BeautifulSoup(response.text, "html.parser")
             count = 0
             for anchor in soup.find_all("a", href=True):
                 title = " ".join(anchor.get_text(" ", strip=True).split())
-                if len(title) < 8:
+                if len(title) < 8 or not _is_useful_headline(title):
                     continue
                 link = anchor["href"]
                 if link.startswith("/"):
