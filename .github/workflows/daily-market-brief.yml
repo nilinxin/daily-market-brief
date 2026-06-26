@@ -6,6 +6,10 @@ on:
     - cron: "30 23 * * 0-4"
     # Beijing 08:50, UTC 00:50.
     - cron: "50 0 * * 1-5"
+    # Beijing 11:40, UTC 03:40.
+    - cron: "40 3 * * 1-5"
+    # Beijing 12:50, UTC 04:50.
+    - cron: "50 4 * * 1-5"
   workflow_dispatch:
     inputs:
       mode:
@@ -17,6 +21,8 @@ on:
           - full
           - us
           - cn
+          - cn_midday_close
+          - cn_pm_preopen
 
 permissions:
   contents: write
@@ -56,6 +62,10 @@ jobs:
             MODE="us"
           elif [ "${{ github.event.schedule }}" = "50 0 * * 1-5" ]; then
             MODE="cn"
+          elif [ "${{ github.event.schedule }}" = "40 3 * * 1-5" ]; then
+            MODE="cn_midday_close"
+          elif [ "${{ github.event.schedule }}" = "50 4 * * 1-5" ]; then
+            MODE="cn_pm_preopen"
           else
             MODE="full"
           fi

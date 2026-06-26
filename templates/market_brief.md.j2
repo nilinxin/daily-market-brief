@@ -103,6 +103,56 @@
 ---
 {% endif %}
 
+{% if mode in ["cn_midday_close", "cn_pm_preopen"] %}
+## {{ report_title }}
+
+### 1. 上午主要指数
+
+| 指数 | 最新价 | 涨跌幅 | 成交额 | 涨跌家数 | 观察 |
+|---|---:|---:|---:|---|---|
+{% for item in a_share_indices -%}
+| {{ item.name }} | {{ item.price }} | {{ item.change_percent }} | {{ item.amount }} | {{ item.breadth }} | {{ item.note }} |
+{% endfor %}
+
+### 2. 上午盘面概览
+
+{{ a_share_midday_summary }}
+
+### 3. 强势方向
+
+{% if a_share_strong_boards %}
+{% for item in a_share_strong_boards %}
+- {{ item.name }}：{{ item.change_percent }}，{{ item.note }}。
+{% endfor %}
+{% else %}
+- 暂未抓取到明确强势板块。
+{% endif %}
+
+### 4. 弱势方向
+
+{% if a_share_weak_boards %}
+{% for item in a_share_weak_boards %}
+- {{ item.name }}：{{ item.change_percent }}，{{ item.note }}。
+{% endfor %}
+{% else %}
+- 暂未抓取到明确弱势板块。
+{% endif %}
+
+### 5. 午后观察
+
+{{ a_share_pm_outlook }}
+
+### 6. 午后关注方向
+
+{{ a_share_midday_focus }}
+
+### 7. 风险提示
+
+{{ a_share_midday_risk }}
+
+---
+{% endif %}
+
 ## 数据来源
 
 {% for source in sources %}

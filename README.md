@@ -16,6 +16,8 @@ python -m src.main --mode full
 - `full`：生成完整简报。
 - `us`：生成美股简报文件。
 - `cn`：生成 A 股盘前简报文件。
+- `cn_midday_close`：生成 A 股午盘简报。
+- `cn_pm_preopen`：生成 A 股下午开盘前简报。
 
 ## GitHub Actions 自动运行
 
@@ -23,6 +25,8 @@ python -m src.main --mode full
 
 - 北京时间周一到周五 07:30 左右。
 - 北京时间周一到周五 08:50 左右。
+- 北京时间周一到周五 11:40 左右。
+- 北京时间周一到周五 12:50 左右。
 
 GitHub Actions 使用 UTC 时间，配置中已经换算。
 
