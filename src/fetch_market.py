@@ -107,7 +107,7 @@ def _is_suspicious_change(change: float | None, item_type: str) -> bool:
         "index": 8,
         "future": 12,
         "forex": 3,
-        "commodity": 15,
+        "commodity": 8,
     }
     return abs(change) > limit_by_type.get(item_type, 20)
 
