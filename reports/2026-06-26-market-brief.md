@@ -16,34 +16,33 @@
 
 | 项目 | 最新价 | 涨跌幅 | 观察 |
 |---|---:|---:|---|
-| 纳斯达克100期货 | 29,391.75 | -0.42% | 小幅走弱 |
-| 标普500期货 | 7,386.00 | -0.57% | 小幅走弱 |
-| 道指期货 | 52,266.00 | -0.02% | 基本持平 |
-| 富时A50期货 | 15,887.91 | 未取得 | 数据暂缺 |
-| 离岸人民币 | 6.8063 | 未取得 | 数据暂缺 |
+| 纳斯达克100期货 | 29,344.25 | -0.58% | 小幅走弱 |
+| 标普500期货 | 7,380.00 | -0.65% | 小幅走弱 |
+| 道指期货 | 52,268.00 | -0.02% | 基本持平 |
+| 富时A50期货 | 15,887.91 | +1.18% | 温和上涨 |
+| 离岸人民币 | 6.8066 | +0.12% | 基本持平 |
 | 美元指数 | 101.55 | +0.12% | 基本持平 |
-| 黄金 | 4,019.70 | +0.74% | 温和上涨 |
+| 黄金 | 4,008.90 | +0.47% | 温和上涨 |
 | 原油 | 71.1 | +1.08% | 温和上涨 |
-| 铜 | 6.044 | +1.70% | 明显走强 |
+| 铜 | 6.0455 | +1.72% | 明显走强 |
 | 铝 | 3,293.75 | -8.14% | 明显回落 |
 
 ### 3. 当天或隔夜较强方向
 
-AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。
+半导体、AI、液冷和数据中心、消费电子 相关消息更活跃，盘前可重点看这些方向能否形成资金共振。
 
 ### 4. 重点方向消息
 
 #### AI
-- [New student loan limits are here. Here's what to do when federal aid isn't enough.](https://finance.yahoo.com/personal-finance/student-loans/article/federal-student-loan-limits-when-federal-aid-isnt-enough-140723743.html)（Yahoo Finance）
-- [‘Major refund opportunity’: IRS may owe millions of Americans cash — but you must claim by July 10 to get your chance](https://finance.yahoo.com/economy/policy/articles/major-refund-opportunity-irs-may-144500475.html)（Yahoo Finance）
-- [JPMorgan raises S&P 500 target to 7,800 but warns of 'flash crash'](https://finance.yahoo.com/markets/article/jpmorgan-raises-sp-500-target-to-7800-but-warns-of-flash-crash-145240724.html)（Yahoo Finance）
-- [Leading investment bank tells investors to prepare for every scenario as policy uncertainty lingers](https://finance.yahoo.com/economy/policy/articles/leading-investment-bank-tells-investors-143400642.html)（Yahoo Finance）
 - [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
+- [Infosys (INFY) Continues To Win Major AI Contracts As Stock Trades Near 52-Week Lows](https://finance.yahoo.com/technology/ai/articles/infosys-infy-continues-win-major-152440602.html)（Yahoo Finance）
+- [科创50狂飙之势堪比费城半导体 AI算力狂潮点燃大A牛市! 业绩期与居民储蓄入市或引爆新一轮主升浪](https://cn.investing.com/news/stock-market-news/article-3434574)（Investing CN）
+- [港股异动 | 佑驾创新(02431)再涨超6% 获高管团队增持 公司进一步延伸物理AI技术边界](https://cn.investing.com/news/stock-market-news/article-3434572)（Investing CN）
 
 #### 半导体
 - [Alliance Semiconductor: How To Find & Own America's Greatest Opportunities](https://www.investors.com/how-to-invest/growth-stock-alliance-semiconductor-americas-greatest-opportunities/?src=A00220&yptr=yahoo)（Yahoo Finance）
-- [How Applied Materials Could Become the Next $1 Trillion Chip Stock](https://finance.yahoo.com/markets/stocks/articles/applied-materials-could-become-next-150258562.html)（Yahoo Finance）
 - [How Semiconductor Stocks Could Drop 50% From Here, And How This 1 ETF Could Win Big](https://finance.yahoo.com/markets/stocks/articles/semiconductor-stocks-could-drop-50-150220745.html)（Yahoo Finance）
+- [How Applied Materials Could Become the Next $1 Trillion Chip Stock](https://finance.yahoo.com/markets/stocks/articles/applied-materials-could-become-next-150258562.html)（Yahoo Finance）
 - [Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.](https://finance.yahoo.com/technology/ai/articles/wall-street-says-ai-slowing-152227316.html)（Yahoo Finance）
 - [科创50狂飙之势堪比费城半导体 AI算力狂潮点燃大A牛市! 业绩期与居民储蓄入市或引爆新一轮主升浪](https://cn.investing.com/news/stock-market-news/article-3434574)（Investing CN）
 
@@ -82,7 +81,7 @@ AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，�
 
 ### 6. 市场情绪分析
 
-三大指数整体波动不大，市场情绪偏中性；期货端有回落压力。
+三大指数整体波动不大，市场情绪偏中性；期货端暂未给出明显方向。
 
 ### 7. 今日美股走势观察
 
@@ -95,15 +94,15 @@ AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，�
 ### 1. 外围信息
 
 - 美股整体变化不大，对 A 股影响偏中性。
-- 纳斯达克100期货：-0.42%，小幅走弱。
-- 标普500期货：-0.57%，小幅走弱。
+- 纳斯达克100期货：-0.58%，小幅走弱。
+- 标普500期货：-0.65%，小幅走弱。
 - 道指期货：-0.02%，基本持平。
-- 富时A50期货：未取得，数据暂缺。
-- 离岸人民币：未取得，数据暂缺。
+- 富时A50期货：+1.18%，温和上涨。
+- 离岸人民币：+0.12%，基本持平。
 - 美元指数：+0.12%，基本持平。
-- 黄金：+0.74%，温和上涨。
+- 黄金：+0.47%，温和上涨。
 - 原油：+1.08%，温和上涨。
-- 铜：+1.70%，明显走强。
+- 铜：+1.72%，明显走强。
 - 铝：-8.14%，明显回落。
 
 ### 2. 国内重要政策、产业消息、公告和观点
@@ -123,7 +122,7 @@ AI、半导体、液冷和数据中心、消费电子 相关消息更活跃，�
 
 ### 3. 重点板块分析
 
-- AI：有新增消息催化，代表消息是“New student loan limits are here. Here's what to do when federal aid isn't enough.”，开盘重点看强度和持续性。
+- AI：有新增消息催化，代表消息是“Wall Street Says AI Is Slowing. Taiwan Semiconductor’s Latest Move Says Otherwise.”，开盘重点看强度和持续性。
 - 半导体：有新增消息催化，代表消息是“Alliance Semiconductor: How To Find & Own America's Greatest Opportunities”，开盘重点看强度和持续性。
 - 铜和有色金属：暂未看到明确新增催化，更多看资金承接和个股公告。
 - 液冷和数据中心：有新增消息催化，代表消息是“光大证券：数据中心建设带动发电设备需求提升 燃机、柴发产业链深度受益”，开盘重点看强度和持续性。
@@ -144,11 +143,11 @@ AI、半导体、液冷和数据中心、消费电子
 
 需要注意追高风险的方向：
 
-标普500期货、铝 走弱相关方向，以及开盘快速冲高但量能不足的个股。
+纳斯达克100期货、标普500期货、铝 走弱相关方向，以及开盘快速冲高但量能不足的个股。
 
 ### 5. 今日关注方向
 
-AI、半导体、液冷和数据中心、消费电子、黄金、原油
+AI、半导体、液冷和数据中心、消费电子、富时A50期货、原油
 
 ### 6. 风险提示
 
@@ -160,13 +159,10 @@ AI、半导体、液冷和数据中心、消费电子、黄金、原油
 
 - [Yahoo Finance](https://finance.yahoo.com/)
 - [Yahoo Finance](https://finance.yahoo.com/news/rssindex)
-- [Nasdaq News](https://www.nasdaq.com/feed/rssoutbound?category=Markets)
 - [Investing CN](https://cn.investing.com/rss/news.rss)
-- [东方财富](https://finance.eastmoney.com/a/cywjh.xml)
 - [财联社](https://www.cls.cn/telegraph)
 - [证监会](http://www.csrc.gov.cn/csrc/c100028/common_list.shtml)
 
 ## 抓取状态
 
-- Nasdaq News 新闻抓取失败：请求超时
-- 东方财富 新闻抓取失败：HTTPError: 404 Client Error: Not Found for url: https://finance.eastmon...
+- 本次运行未记录到明显抓取错误。
