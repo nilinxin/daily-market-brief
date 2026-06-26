@@ -190,15 +190,21 @@ def filter_topic_news(news: Iterable[NewsItem], topics: dict[str, list[str]], li
     result: dict[str, list[NewsItem]] = {}
     for topic, keywords in topics.items():
         matched: list[NewsItem] = []
-        lowered_keywords = [keyword.lower() for keyword in keywords]
         for item in news:
-            title_lower = item.title.lower()
-            if any(keyword in title_lower for keyword in lowered_keywords):
+            if any(_matches_keyword(item.title, keyword) for keyword in keywords):
                 matched.append(item)
             if len(matched) >= limit:
                 break
         result[topic] = matched
     return result
+
+
+def _matches_keyword(title: str, keyword: str) -> bool:
+    title_lower = title.lower()
+    keyword_lower = keyword.lower()
+    if keyword.isascii():
+        return re.search(rf"(?<![a-z0-9]){re.escape(keyword_lower)}(?![a-z0-9])", title_lower) is not None
+    return keyword_lower in title_lower
 
 
 def dedupe_news(news: Iterable[NewsItem]) -> list[NewsItem]:
@@ -239,7 +245,7 @@ def filter_china_news(news: Iterable[NewsItem], limit: int = 12) -> list[NewsIte
     for item in news:
         if not _is_useful_headline(item.title):
             continue
-        if any(keyword.lower() in item.title.lower() for keyword in china_keywords):
+        if any(_matches_keyword(item.title, keyword) for keyword in china_keywords):
             picked.append(item)
         if len(picked) >= limit:
             break

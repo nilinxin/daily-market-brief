@@ -136,8 +136,17 @@ def _fetch_yahoo_quote(session: requests.Session, item: dict) -> MarketQuote:
         raise ValueError("no close price returned")
 
     close = float(closes[-1])
-    previous_close = float(closes[-2]) if len(closes) >= 2 else None
+    meta = chart.get("meta", {})
+    previous_close = float(closes[-2]) if len(closes) >= 2 else _meta_previous_close(meta)
     return _quote_from_values(name, symbol, close, previous_close, "Yahoo Finance", item_type)
+
+
+def _meta_previous_close(meta: dict) -> float | None:
+    for key in ("previousClose", "chartPreviousClose", "regularMarketPreviousClose"):
+        value = meta.get(key)
+        if value:
+            return float(value)
+    return None
 
 
 def _fetch_finnhub_quote(session: requests.Session, item: dict) -> MarketQuote:
