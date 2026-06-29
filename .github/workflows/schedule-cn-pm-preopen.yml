@@ -6,6 +6,9 @@ on:
     - cron: "50 4 * * 1-5"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   send:
     uses: ./.github/workflows/daily-market-brief.yml
