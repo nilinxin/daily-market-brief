@@ -1,0 +1,14 @@
+name: Scheduled A-Share Preopen Brief
+
+on:
+  schedule:
+    # Beijing 08:50, Monday-Friday.
+    - cron: "50 0 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  send:
+    uses: ./.github/workflows/daily-market-brief.yml
+    with:
+      mode: cn
+    secrets: inherit

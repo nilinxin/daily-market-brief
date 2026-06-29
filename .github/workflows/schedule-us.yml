@@ -1,0 +1,14 @@
+name: Scheduled US Market Brief
+
+on:
+  schedule:
+    # Beijing 07:30, Monday-Friday.
+    - cron: "30 23 * * 0-4"
+  workflow_dispatch:
+
+jobs:
+  send:
+    uses: ./.github/workflows/daily-market-brief.yml
+    with:
+      mode: us
+    secrets: inherit

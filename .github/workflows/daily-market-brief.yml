@@ -1,15 +1,11 @@
 name: Daily Market Brief
 
 on:
-  schedule:
-    # Beijing 07:30, UTC previous day 23:30.
-    - cron: "30 23 * * 0-4"
-    # Beijing 08:50, UTC 00:50.
-    - cron: "50 0 * * 1-5"
-    # Beijing 11:40, UTC 03:40.
-    - cron: "40 3 * * 1-5"
-    # Beijing 12:50, UTC 04:50.
-    - cron: "50 4 * * 1-5"
+  workflow_call:
+    inputs:
+      mode:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       mode:
@@ -60,19 +56,7 @@ jobs:
           TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
           TIINGO_API_KEY: ${{ secrets.TIINGO_API_KEY }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            MODE="${{ inputs.mode || 'full' }}"
-          elif [ "${{ github.event.schedule }}" = "30 23 * * 0-4" ]; then
-            MODE="us"
-          elif [ "${{ github.event.schedule }}" = "50 0 * * 1-5" ]; then
-            MODE="cn"
-          elif [ "${{ github.event.schedule }}" = "40 3 * * 1-5" ]; then
-            MODE="cn_midday_close"
-          elif [ "${{ github.event.schedule }}" = "50 4 * * 1-5" ]; then
-            MODE="cn_pm_preopen"
-          else
-            MODE="full"
-          fi
+          MODE="${{ inputs.mode || 'full' }}"
           python -m src.main --mode "$MODE"
 
       - name: Commit generated report
