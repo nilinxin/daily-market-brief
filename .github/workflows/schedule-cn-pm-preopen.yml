@@ -1,9 +1,6 @@
 name: Scheduled A-Share PM Preopen Brief
 
 on:
-  schedule:
-    # Beijing 12:50, Monday-Friday.
-    - cron: "50 4 * * 1-5"
   workflow_dispatch:
 
 permissions:

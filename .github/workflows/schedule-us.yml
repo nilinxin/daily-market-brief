@@ -1,9 +1,6 @@
 name: Scheduled US Market Brief
 
 on:
-  schedule:
-    # Beijing 07:30, Monday-Friday.
-    - cron: "30 23 * * 0-4"
   workflow_dispatch:
 
 permissions:

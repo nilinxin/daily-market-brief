@@ -60,6 +60,7 @@ jobs:
           python -m src.main --mode "$MODE"
 
       - name: Commit generated report
+        continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Add daily market brief"
