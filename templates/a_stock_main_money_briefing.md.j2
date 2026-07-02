@@ -18,6 +18,7 @@
 - 涨跌家数：上涨 {{ market.rises }} 家，下跌 {{ market.falls }} 家，平盘 {{ market.flats }} 家。
 - 截至当前两市成交额：{{ "%.0f亿元"|format(market.amount / 100000000) }}；市场平均量比约 {{ "%.2f"|format(market.average_volume_ratio) }}。
 - 涨停/跌停近似统计：{{ market.limit_up }} / {{ market.limit_down }} 家。
+- 涨停池与连板高度：{{ market.pool_count }} 只，最高 {{ market.max_streak }} 连板；接口暂缺时显示为0，不据此判断情绪。
 - 主力资金整体流向：{{ "%.2f亿元"|format(market.main_flow / 100000000) }}。
 - 市场情绪：{{ market.mood }}。
 - 当前应对：{{ market.posture }}。

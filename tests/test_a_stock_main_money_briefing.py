@@ -22,6 +22,7 @@ def candidate(**changes):
         turnover=2.5,
         volume_ratio=1.3,
         market_cap=20_000_000_000,
+        pe=25.0,
         current_main_flow=30_000_000,
         current_flow_ratio=6.0,
         sector_change=2.2,

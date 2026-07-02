@@ -49,6 +49,7 @@ class Candidate:
     turnover: float
     volume_ratio: float
     market_cap: float
+    pe: float
     current_main_flow: float
     current_flow_ratio: float
     sector_change: float = 0.0
@@ -154,7 +155,7 @@ def fetch_stock_snapshot(client: MarketClient) -> list[dict[str, Any]]:
             "invt": 2,
             "fid": "f6",
             "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
-            "fields": "f2,f3,f5,f6,f8,f10,f12,f14,f15,f16,f17,f18,f20,f21,f62,f100,f124,f184",
+            "fields": "f2,f3,f5,f6,f8,f9,f10,f12,f14,f15,f16,f17,f18,f20,f21,f62,f100,f124,f184",
         }
     payload = client.json(f"{EASTMONEY_QUOTE}/clist/get", params)
     data = payload.get("data", {}) or {}
@@ -202,6 +203,23 @@ def fetch_indices(client: MarketClient) -> list[dict[str, Any]]:
         }
         for row in payload.get("data", {}).get("diff") or []
     ]
+
+
+def fetch_limit_pool(client: MarketClient, now: datetime) -> tuple[int, int]:
+    payload = client.json(
+        "https://push2ex.eastmoney.com/getTopicZTPool",
+        {
+            "ut": "7eea3edcaed734bea9cbfc24409ed989",
+            "d": now.strftime("%Y%m%d"),
+            "Pageindex": 0,
+            "pagesize": 300,
+            "sort": "fbt:asc",
+        },
+        attempts=1,
+    )
+    rows = payload.get("data", {}).get("pool") or []
+    streaks = [int(_num(row.get("lbc"), 1) or 1) for row in rows]
+    return len(rows), max(streaks, default=0)
 
 
 def fetch_boards(client: MarketClient) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -441,6 +459,7 @@ def make_initial_candidates(
         turnover = _num(row.get("f8"), 0.0) or 0.0
         volume_ratio = _num(row.get("f10"), 0.0) or 0.0
         market_cap = _num(row.get("f20"), 0.0) or 0.0
+        pe = _num(row.get("f9"), 0.0) or 0.0
         flow = _num(row.get("f62"), 0.0) or 0.0
         if price is None or change is None or price <= 0 or amount < amount_floor or market_cap < config["minimum_market_cap"]:
             continue
@@ -468,6 +487,7 @@ def make_initial_candidates(
                     turnover=turnover,
                     volume_ratio=volume_ratio,
                     market_cap=market_cap,
+                    pe=pe,
                     current_main_flow=flow,
                     current_flow_ratio=flow_ratio,
                     sector_change=float(board.get("change", 0.0)),
@@ -552,6 +572,8 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> Candidate:
         risk += 2
     if candidate.flow_5d < 0:
         risk += 3
+    if candidate.pe <= 0:
+        risk += 2
     if candidate.risk_notice:
         risk += 4
     candidate.risk_deduction = min(10, risk)
@@ -650,6 +672,12 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
         indices = []
         errors.append(f"三大指数：{exc}")
         statuses.append(SourceStatus("三大指数", False, str(exc)))
+    try:
+        pool_count, max_streak = fetch_limit_pool(client, now)
+        statuses.append(SourceStatus("涨停池与连板高度", pool_count > 0, f"涨停池 {pool_count} 只，最高 {max_streak} 连板"))
+    except Exception as exc:  # noqa: BLE001
+        pool_count, max_streak = 0, 0
+        statuses.append(SourceStatus("涨停池与连板高度", False, str(exc)))
     try:
         inflow_boards, outflow_boards = fetch_boards(client)
         statuses.append(SourceStatus("行业与概念板块资金", bool(inflow_boards), f"流入/流出各 {len(inflow_boards)}/{len(outflow_boards)} 项"))
@@ -754,14 +782,14 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
         "slot": slot,
         "slot_label": "10:30盘中版" if slot == "1030" else "13:30盘中版",
         "quote_time": quote_time,
-        "market": build_market_summary(snapshot, indices),
+        "market": {**build_market_summary(snapshot, indices), "pool_count": pool_count, "max_streak": max_streak},
         "inflow_boards": inflow_boards[:8],
         "outflow_boards": outflow_boards[:8],
         "stocks": selected,
         "top3": selected[:3],
         "statuses": statuses,
         "errors": errors,
-        "confidence": _confidence(statuses[:6]),
+        "confidence": _confidence(statuses[:7]),
         "sources": SOURCE_LINKS,
         "history_failures": history_failures,
         "candidate_count": len(initial),
