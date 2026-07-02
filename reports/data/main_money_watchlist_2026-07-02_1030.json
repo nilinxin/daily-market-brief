@@ -1,13 +1,13 @@
 {
   "report_date": "2026-07-02",
-  "generated_at": "2026-07-02 09:05:48 CST",
+  "generated_at": "2026-07-02 09:09:13 CST",
   "slot": "1030",
   "confidence": "低",
   "source_status": [
     {
       "name": "A股实时行情",
       "success": false,
-      "detail": "取得 5435 只股票，其中 0 只有有效盘中价格"
+      "detail": "取得 5535 只股票，其中 0 只有有效盘中价格"
     },
     {
       "name": "三大指数",
