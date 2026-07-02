@@ -1,0 +1,53 @@
+name: A-Share Main Money Opportunity Brief
+
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Intraday report slot"
+        required: true
+        default: "1030"
+        type: choice
+        options:
+          - "1030"
+          - "1330"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: a-stock-main-money-briefing
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate independent report
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_TO: ${{ secrets.SMTP_TO }}
+        run: python -m src.a_stock_main_money_briefing --slot "${{ inputs.slot }}"
+
+      - name: Commit only this report
+        continue-on-error: true
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add A-share main-money opportunity brief"
+          file_pattern: reports/a_stock_main_money_briefing_*.md reports/data/main_money_watchlist_*.json

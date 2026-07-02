@@ -1,0 +1,108 @@
+# {{ title }}
+
+日期：{{ report_date }}  
+生成时间：{{ generated_at }}  
+版本：{{ slot_label }}（行情截至 {{ quote_time }}）  
+当前结果可信度：**{{ confidence }}**
+
+> “主力资金”是公开行情源按成交单分类计算的资金指标，不代表已确认的机构持仓。本简报只作为市场分析和观察清单，不构成投资建议。
+
+## 一、今日A股大盘状态
+
+{% if market.available %}
+| 指数 | 点位 | 涨跌幅 | 截至当前成交额 |
+| -- | --: | --: | --: |
+{% for item in market.indices %}| {{ item.name }} | {{ "%.2f"|format(item.price) if item.price is not none else "数据暂缺" }} | {{ "%+.2f%%"|format(item.change) if item.change is not none else "数据暂缺" }} | {{ "%.0f亿元"|format(item.amount / 100000000) if item.amount else "数据暂缺" }} |
+{% endfor %}
+
+- 涨跌家数：上涨 {{ market.rises }} 家，下跌 {{ market.falls }} 家，平盘 {{ market.flats }} 家。
+- 截至当前两市成交额：{{ "%.0f亿元"|format(market.amount / 100000000) }}；市场平均量比约 {{ "%.2f"|format(market.average_volume_ratio) }}。
+- 涨停/跌停近似统计：{{ market.limit_up }} / {{ market.limit_down }} 家。
+- 主力资金整体流向：{{ "%.2f亿元"|format(market.main_flow / 100000000) }}。
+- 市场情绪：{{ market.mood }}。
+- 当前应对：{{ market.posture }}。
+{% else %}
+- 全市场盘中核心数据暂缺，本版不输出股票观察名单，也不根据零值推断市场状态。
+- 三大指数仅作接口连通性参考，不视为当前有效盘中结论。
+{% endif %}
+- 北向资金/外资实时净流入：**数据暂缺**，不使用估算值替代。
+
+## 二、今日主力资金强势板块
+
+| 排名 | 板块名称 | 涨跌幅 | 主力净流入 | 板块阶段 | 说明 |
+| --: | -- | --: | --: | -- | -- |
+{% for item in inflow_boards %}| {{ loop.index }} | {{ item.name }}（{{ item.type }}） | {{ "%+.2f%%"|format(item.change) }} | {{ "%.2f亿元"|format(item.flow / 100000000) }} | {{ item.stage }} | {{ item.note }} |
+{% else %}| - | 数据暂缺 | - | - | - | 板块资金接口未取得有效数据 |
+{% endfor %}
+
+## 三、今日主力资金流出风险板块
+
+| 排名 | 板块名称 | 涨跌幅 | 主力净流出 | 风险原因 |
+| --: | -- | --: | --: | -- |
+{% for item in outflow_boards %}| {{ loop.index }} | {{ item.name }}（{{ item.type }}） | {{ "%+.2f%%"|format(item.change) }} | {{ "%.2f亿元"|format(item.flow / 100000000) }} | {{ item.risk_reason }} |
+{% else %}| - | 数据暂缺 | - | - | 板块资金接口未取得有效数据 |
+{% endfor %}
+
+## 四、主力可能低吸/待涨股票
+
+本次初选 {{ candidate_count }} 只，达到60分且核心数据完整的股票 {{ qualified_count }} 只。候选不足10只时不强行补足。
+
+| 排名 | 股票代码 | 股票名称 | 所属板块 | 推荐逻辑 | 主力资金情况 | 技术位置 | 风险等级 | 观察价位 |
+| --: | -- | -- | -- | -- | -- | -- | -- | -- |
+{% for item in stocks %}| {{ loop.index }} | {{ item.code }} | {{ item.name }} | {{ item.sector }} | {{ item.reasons }} | 当日 {{ "%.2f亿元"|format(item.current_main_flow / 100000000) }}；3日 {{ "%.2f亿元"|format(item.flow_3d / 100000000) }}；5日 {{ "%.2f亿元"|format(item.flow_5d / 100000000) }} | {{ item.technical_position }} | {{ item.risk_level }} | {{ item.observation }} |
+{% else %}| - | - | 暂无达到门槛的股票 | - | 宁缺毋滥，等待资金与位置同时满足条件 | - | - | - | - |
+{% endfor %}
+
+## 五、重点观察前3名
+
+{% for item in top3 %}
+### {{ loop.index }}. {{ item.name }} / {{ item.code }}
+
+- 所属方向：{{ item.sector }}
+- 主力资金：当日 {{ "%.2f亿元"|format(item.current_main_flow / 100000000) }}，近5日 {{ "%.2f亿元"|format(item.flow_5d / 100000000) }}，5日内 {{ item.positive_flow_days_5 }} 日净流入。
+- 当前技术位置：{{ item.technical_position }}；60日区间位置 {{ "%.0f%%"|format(item.range_position_60d) }}。
+- 为什么值得观察：{{ item.reasons }}
+- 适合策略：{{ item.strategy }}，只作观察条件，不是买入指令。
+- 不能参与的情况：明显高开、放量冲高回落、跌破支撑且资金转为净流出。
+- 风险点：{{ item.risk_notice or "未取得明确重大风险提示，仍需核对最新公告" }}。
+- 最近披露补充：{{ item.supplementary_note }}。
+- 明日确认信号：回踩缩量企稳、板块继续有资金承接、个股主力资金未转为持续流出。
+{% else %}
+暂无达到门槛的重点观察股票。
+{% endfor %}
+
+## 六、综合评分
+
+五项正向指标合计90分；风险项基础10分，再按风险程度扣减，最终满分100分。
+
+| 股票 | 板块强度 | 资金流入 | 技术位置 | 低位滞涨 | 量能换手 | 风险扣分 | 总分 |
+| -- | --: | --: | --: | --: | --: | --: | --: |
+{% for item in stocks %}| {{ item.name }}（{{ item.code }}） | {{ item.sector_score }} | {{ item.money_score }} | {{ item.technical_score }} | {{ item.lag_score }} | {{ item.volume_score }} | -{{ item.risk_deduction }} | **{{ item.total_score }}** |
+{% else %}| 暂无 | - | - | - | - | - | - | - |
+{% endfor %}
+
+## 七、数据获取状态
+
+| 数据项 | 状态 | 说明 |
+| -- | -- | -- |
+{% for item in statuses %}| {{ item.name }} | {{ "成功" if item.success else "暂缺" }} | {{ item.detail }} |
+{% endfor %}
+
+{% if errors %}
+抓取错误：
+{% for error in errors %}- {{ error }}
+{% endfor %}
+{% endif %}
+
+## 八、风险提示
+
+1. 本简报只作为市场分析和观察清单，不构成投资建议。
+2. 股票推荐不是买入指令，公开资金指标也不能证明真实机构正在建仓。
+3. 如果次日高开过多、放量冲高回落、主力资金转流出，应放弃追高。
+4. 优先等待回踩、缩量企稳、资金继续流入后的观察机会。
+5. 严格控制仓位，不要满仓单只股票。
+
+## 数据来源
+
+{% for source in sources %}- [{{ source.name }}]({{ source.url }})
+{% endfor %}
