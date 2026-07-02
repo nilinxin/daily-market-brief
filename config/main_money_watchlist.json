@@ -10,8 +10,9 @@
   },
   "maximum_daily_rise": 6.5,
   "minimum_daily_rise": -4.5,
-  "maximum_five_day_rise": 25.0,
-  "maximum_ten_day_rise": 40.0,
+  "maximum_five_day_rise": 18.0,
+  "maximum_ten_day_rise": 30.0,
+  "maximum_volume_ratio": 4.0,
   "healthy_turnover": {
     "1030": [0.35, 6.0],
     "1330": [0.6, 9.0]

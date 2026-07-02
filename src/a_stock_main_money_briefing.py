@@ -20,7 +20,12 @@ from src.notifier import notify_report_ready
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EASTMONEY_QUOTE = "https://push2.eastmoney.com/api/qt"
+EASTMONEY_QUOTE_HOSTS = (
+    "https://82.push2.eastmoney.com/api/qt",
+    "https://20.push2.eastmoney.com/api/qt",
+    "https://33.push2.eastmoney.com/api/qt",
+    "https://push2.eastmoney.com/api/qt",
+)
 EASTMONEY_HISTORY = "https://push2his.eastmoney.com/api/qt"
 SOURCE_LINKS = [
     {"name": "东方财富行情中心", "url": "https://quote.eastmoney.com/"},
@@ -145,6 +150,16 @@ def _format_money(value: float) -> str:
     return f"{sign}{value / 10_000:.0f}万元"
 
 
+def quote_json(client: MarketClient, path: str, params: dict[str, Any], attempts: int = 1) -> dict[str, Any]:
+    errors: list[str] = []
+    for host in EASTMONEY_QUOTE_HOSTS:
+        try:
+            return client.json(f"{host}/{path}", params, attempts=attempts)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(str(exc))
+    raise RuntimeError("；".join(errors[-2:]) or "所有公开行情节点均不可用")
+
+
 def fetch_stock_snapshot(client: MarketClient) -> list[dict[str, Any]]:
     params = {
             "pn": 1,
@@ -157,7 +172,7 @@ def fetch_stock_snapshot(client: MarketClient) -> list[dict[str, Any]]:
             "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
             "fields": "f2,f3,f5,f6,f8,f9,f10,f12,f14,f15,f16,f17,f18,f20,f21,f62,f100,f124,f184",
         }
-    payload = client.json(f"{EASTMONEY_QUOTE}/clist/get", params)
+    payload = quote_json(client, "clist/get", params)
     data = payload.get("data", {}) or {}
     rows = list(data.get("diff") or [])
     total = int(data.get("total") or len(rows))
@@ -169,9 +184,7 @@ def fetch_stock_snapshot(client: MarketClient) -> list[dict[str, Any]]:
         page_params = dict(params)
         page_params["pn"] = page
         try:
-            page_payload = MarketClient(min(client.timeout, 8)).json(
-                f"{EASTMONEY_QUOTE}/clist/get", page_params, attempts=1
-            )
+            page_payload = quote_json(MarketClient(min(client.timeout, 8)), "clist/get", page_params)
             return page_payload.get("data", {}).get("diff") or []
         except Exception:  # noqa: BLE001
             return []
@@ -185,8 +198,9 @@ def fetch_stock_snapshot(client: MarketClient) -> list[dict[str, Any]]:
 
 def fetch_indices(client: MarketClient) -> list[dict[str, Any]]:
     names = {"000001": "上证指数", "399001": "深证成指", "399006": "创业板指"}
-    payload = client.json(
-        f"{EASTMONEY_QUOTE}/ulist.np/get",
+    payload = quote_json(
+        client,
+        "ulist.np/get",
         {
             "fltt": 2,
             "invt": 2,
@@ -217,7 +231,7 @@ def fetch_limit_pool(client: MarketClient, now: datetime) -> tuple[int, int]:
         },
         attempts=1,
     )
-    rows = payload.get("data", {}).get("pool") or []
+    rows = (payload.get("data") or {}).get("pool") or []
     streaks = [int(_num(row.get("lbc"), 1) or 1) for row in rows]
     return len(rows), max(streaks, default=0)
 
@@ -225,35 +239,38 @@ def fetch_limit_pool(client: MarketClient, now: datetime) -> tuple[int, int]:
 def fetch_boards(client: MarketClient) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     boards: list[dict[str, Any]] = []
     for board_type, fs in (("行业", "m:90+t:2"), ("概念", "m:90+t:3")):
-        payload = client.json(
-            f"{EASTMONEY_QUOTE}/clist/get",
-            {
-                "pn": 1,
-                "pz": 200,
-                "po": 1,
-                "np": 1,
-                "fltt": 2,
-                "invt": 2,
-                "fid": "f62",
-                "fs": fs,
-                "fields": "f2,f3,f6,f12,f14,f62,f184",
-            },
-        )
-        for row in payload.get("data", {}).get("diff") or []:
-            raw_flow = _num(row.get("f62"))
-            raw_change = _num(row.get("f3"))
-            if raw_flow is None or raw_change is None:
-                continue
-            boards.append(
+        for descending in (True, False):
+            payload = quote_json(
+                client,
+                "clist/get",
                 {
-                    "type": board_type,
-                    "code": str(row.get("f12") or ""),
-                    "name": str(row.get("f14") or "未知板块"),
-                    "change": raw_change,
-                    "flow": raw_flow,
-                    "flow_ratio": _num(row.get("f184"), 0.0) or 0.0,
-                }
+                    "pn": 1,
+                    "pz": 120,
+                    "po": 1 if descending else 0,
+                    "np": 1,
+                    "fltt": 2,
+                    "invt": 2,
+                    "fid": "f62",
+                    "fs": fs,
+                    "fields": "f2,f3,f6,f12,f14,f62,f184",
+                },
             )
+            for row in payload.get("data", {}).get("diff") or []:
+                raw_flow = _num(row.get("f62"))
+                raw_change = _num(row.get("f3"))
+                if raw_flow is None or raw_change is None:
+                    continue
+                boards.append(
+                    {
+                        "type": board_type,
+                        "code": str(row.get("f12") or ""),
+                        "name": str(row.get("f14") or "未知板块"),
+                        "change": raw_change,
+                        "flow": raw_flow,
+                        "flow_ratio": _num(row.get("f184"), 0.0) or 0.0,
+                    }
+                )
+    boards = list({(item["type"], item["code"]): item for item in boards}.values())
     if not boards or all(item["flow"] == 0 for item in boards):
         return [], []
     inflow = [item for item in sorted(boards, key=lambda item: (item["flow"], item["change"]), reverse=True) if item["flow"] > 0][:10]
@@ -265,8 +282,9 @@ def fetch_concept_members(client: MarketClient, boards: list[dict[str, Any]]) ->
     concepts = [item for item in boards if item["type"] == "概念" and item["code"]][:6]
     memberships: dict[str, dict[str, Any]] = {}
     for board in concepts:
-        payload = client.json(
-            f"{EASTMONEY_QUOTE}/clist/get",
+        payload = quote_json(
+            client,
+            "clist/get",
             {
                 "pn": 1,
                 "pz": 500,
@@ -278,7 +296,6 @@ def fetch_concept_members(client: MarketClient, boards: list[dict[str, Any]]) ->
                 "fs": f"b:{board['code']}",
                 "fields": "f12",
             },
-            attempts=1,
         )
         for row in payload.get("data", {}).get("diff") or []:
             code = str(row.get("f12") or "")
@@ -299,6 +316,7 @@ def fetch_kline(client: MarketClient, code: str) -> list[dict[str, float | str]]
             "fields1": "f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13",
             "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61",
         },
+        attempts=2,
     )
     result = []
     for line in payload.get("data", {}).get("klines") or []:
@@ -331,6 +349,7 @@ def fetch_flow(client: MarketClient, code: str) -> list[dict[str, float | str]]:
             "fields1": "f1,f2,f3,f7",
             "fields2": "f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61,f62,f63",
         },
+        attempts=2,
     )
     result = []
     for line in payload.get("data", {}).get("klines") or []:
@@ -465,7 +484,9 @@ def make_initial_candidates(
             continue
         if not config["minimum_daily_rise"] <= change <= config["maximum_daily_rise"]:
             continue
-        if turnover <= 0 or turnover > turn_max * 1.5:
+        if turnover < turn_min * 0.5 or turnover > turn_max * 1.5:
+            continue
+        if volume_ratio <= 0 or volume_ratio > float(config["maximum_volume_ratio"]):
             continue
         industry = str(row.get("f100") or "未分类")
         concept = (concept_map or {}).get(code)
@@ -710,7 +731,15 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
     history_failures = 0
     if initial:
         with ThreadPoolExecutor(max_workers=int(config["history_workers"])) as executor:
-            futures = {executor.submit(enrich_candidate, item, MarketClient(int(config["request_timeout_seconds"])), config): item for item in initial}
+            futures = {
+                executor.submit(
+                    enrich_candidate,
+                    item,
+                    MarketClient(min(8, int(config["request_timeout_seconds"]))),
+                    config,
+                ): item
+                for item in initial
+            }
             for future in as_completed(futures):
                 try:
                     result = future.result()
