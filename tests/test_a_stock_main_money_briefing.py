@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from src.a_stock_main_money_briefing import Candidate, _freshness, is_risky_name, score_candidate
+from src.a_stock_main_money_briefing import Candidate, SourceStatus, _confidence, _freshness, is_risky_name, score_candidate
 
 
 CONFIG = {
@@ -72,6 +72,19 @@ class ScoreTests(unittest.TestCase):
         old = datetime(2026, 7, 1, 15, 0, tzinfo=ZoneInfo("Asia/Shanghai"))
         fresh, _ = _freshness([{"f124": int(old.timestamp())}], now)
         self.assertFalse(fresh)
+
+    def test_confidence_uses_core_sources_only(self):
+        core = [
+            SourceStatus("A股实时行情", True, "ok"),
+            SourceStatus("三大指数", True, "ok"),
+            SourceStatus("行业与概念板块资金", True, "ok"),
+            SourceStatus("候选股历史行情与资金", True, "ok"),
+            SourceStatus("近期风险公告筛查", True, "ok"),
+            SourceStatus("北向资金实时净流入", False, "optional"),
+        ]
+        self.assertEqual(_confidence(core), "高")
+        core[2] = SourceStatus("行业与概念板块资金", False, "failed")
+        self.assertEqual(_confidence(core), "中")
 
 
 if __name__ == "__main__":

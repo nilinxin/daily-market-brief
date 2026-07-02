@@ -240,21 +240,25 @@ def fetch_boards(client: MarketClient) -> tuple[list[dict[str, Any]], list[dict[
     boards: list[dict[str, Any]] = []
     for board_type, fs in (("行业", "m:90+t:2"), ("概念", "m:90+t:3")):
         for descending in (True, False):
-            payload = quote_json(
-                client,
-                "clist/get",
-                {
-                    "pn": 1,
-                    "pz": 120,
-                    "po": 1 if descending else 0,
-                    "np": 1,
-                    "fltt": 2,
-                    "invt": 2,
-                    "fid": "f62",
-                    "fs": fs,
-                    "fields": "f2,f3,f6,f12,f14,f62,f184",
-                },
-            )
+            try:
+                payload = quote_json(
+                    client,
+                    "clist/get",
+                    {
+                        "pn": 1,
+                        "pz": 120,
+                        "po": 1 if descending else 0,
+                        "np": 1,
+                        "fltt": 2,
+                        "invt": 2,
+                        "fid": "f62",
+                        "fs": fs,
+                        "fields": "f2,f3,f6,f12,f14,f62,f184",
+                    },
+                    attempts=2,
+                )
+            except Exception:  # noqa: BLE001
+                continue
             for row in payload.get("data", {}).get("diff") or []:
                 raw_flow = _num(row.get("f62"))
                 raw_change = _num(row.get("f3"))
@@ -657,10 +661,12 @@ def _freshness(snapshot: list[dict[str, Any]], now: datetime) -> tuple[bool, str
 
 
 def _confidence(statuses: list[SourceStatus]) -> str:
-    if not statuses:
-        return "低"
-    ratio = sum(1 for item in statuses if item.success) / len(statuses)
-    return "高" if ratio >= 0.85 else "中" if ratio >= 0.65 else "低"
+    core_names = {"A股实时行情", "三大指数", "行业与概念板块资金", "候选股历史行情与资金", "近期风险公告筛查"}
+    core = [item for item in statuses if item.name in core_names]
+    success_count = sum(1 for item in core if item.success)
+    if len(core) == len(core_names) and success_count == len(core_names):
+        return "高"
+    return "中" if success_count >= 3 else "低"
 
 
 def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], bool]:
@@ -676,7 +682,7 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
         statuses.append(
             SourceStatus(
                 "A股实时行情",
-                valid_quotes >= 1000,
+                valid_quotes >= 4000,
                 f"取得 {len(snapshot)} 只股票，其中 {valid_quotes} 只有有效盘中价格",
             )
         )
@@ -726,7 +732,7 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
     except Exception as exc:  # noqa: BLE001
         concept_map = {}
         statuses.append(SourceStatus("强势概念成分", False, str(exc)))
-    initial = make_initial_candidates(snapshot, config, slot, board_map, concept_map) if snapshot else []
+    initial = make_initial_candidates(snapshot, config, slot, board_map, concept_map) if snapshot and inflow_boards else []
     enriched: list[Candidate] = []
     history_failures = 0
     if initial:
@@ -788,11 +794,13 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
             f"完成 {notice_successes} 只，失败 {notice_failures} 只" if notice_targets else "无候选股需要筛查",
         )
     )
-    selected = sorted(
-        [item for item in enriched if item.total_score >= int(config["minimum_score"])],
-        key=lambda item: (item.total_score, item.money_score, item.amount),
-        reverse=True,
-    )[: int(config["maximum_results"])]
+    selected = []
+    if inflow_boards:
+        selected = sorted(
+            [item for item in enriched if item.total_score >= int(config["minimum_score"])],
+            key=lambda item: (item.total_score, item.money_score, item.amount),
+            reverse=True,
+        )[: int(config["maximum_results"])]
     statuses.extend(
         [
             SourceStatus("北向资金实时净流入", False, "当前披露口径下盘中数据暂缺"),
@@ -818,7 +826,7 @@ def build_report(slot: str, allow_stale: bool = False) -> tuple[dict[str, Any], 
         "top3": selected[:3],
         "statuses": statuses,
         "errors": errors,
-        "confidence": _confidence(statuses[:7]),
+        "confidence": _confidence(statuses),
         "sources": SOURCE_LINKS,
         "history_failures": history_failures,
         "candidate_count": len(initial),
