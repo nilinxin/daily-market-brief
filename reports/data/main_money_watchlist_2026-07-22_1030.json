@@ -1,0 +1,77 @@
+{
+  "report_date": "2026-07-22",
+  "generated_at": "2026-07-22 10:30:25 CST",
+  "slot": "1030",
+  "confidence": "低",
+  "source_status": [
+    {
+      "name": "A股实时行情",
+      "success": true,
+      "detail": "取得 5540 只股票，其中 5198 只有有效盘中价格"
+    },
+    {
+      "name": "三大指数",
+      "success": true,
+      "detail": "取得 3 项"
+    },
+    {
+      "name": "涨停池与连板高度",
+      "success": false,
+      "detail": "涨停池 0 只，最高 0 连板"
+    },
+    {
+      "name": "行业与概念板块资金",
+      "success": false,
+      "detail": "流入/流出各 0/10 项"
+    },
+    {
+      "name": "龙虎榜与大宗交易",
+      "success": true,
+      "detail": "使用 2026-07-21 等最近已披露数据，龙虎榜 293 只、大宗交易 200 只"
+    },
+    {
+      "name": "强势概念成分",
+      "success": false,
+      "detail": "匹配 0 只成分股"
+    },
+    {
+      "name": "候选股历史行情与资金",
+      "success": false,
+      "detail": "完整 0 只，失败或被排除 0 只"
+    },
+    {
+      "name": "近期风险公告筛查",
+      "success": false,
+      "detail": "无候选股需要筛查"
+    },
+    {
+      "name": "北向资金实时净流入",
+      "success": false,
+      "detail": "当前披露口径下盘中数据暂缺"
+    },
+    {
+      "name": "ETF份额变化",
+      "success": false,
+      "detail": "盘中稳定数据暂缺，未计入评分"
+    }
+  ],
+  "candidates": [],
+  "sources": [
+    {
+      "name": "东方财富行情中心",
+      "url": "https://quote.eastmoney.com/"
+    },
+    {
+      "name": "东方财富数据中心",
+      "url": "https://data.eastmoney.com/"
+    },
+    {
+      "name": "上海证券交易所公告",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/"
+    },
+    {
+      "name": "深圳证券交易所公告",
+      "url": "https://www.szse.cn/disclosure/listed/notice/"
+    }
+  ]
+}
